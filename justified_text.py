@@ -7,30 +7,44 @@ Hacer un programa en python que "justifique" un texto con fuente monoespaciada.
 
 
 ⚠️ no usar ninguna librería, solo Python puro
+
+output:
+Enter a number for the length of the line: 49
+La  historia  de  la  ópera  tiene  una duración
+relativamente  corta  dentro  del contexto de la
+historia  de  la  música en general: apareció en
+1597,  fecha  en  que  se creó la primera ópera.
+
 """
 
 def bucle(text):
+    """
+    Obtiene un sub string
+    """
     large = 0
-    cadena = []
+    chain = []
     for pos, txt in enumerate(text):
         large += len(txt)
         end = large + pos
         if end <= long:
-            cadena.append(txt)
-        if end >= long:
+            chain.append(txt)
+        if end >= long: #evita recorrer todo el texto
             break
-    first = " ".join(cadena)
+    sub_string = " ".join(chain)
 
-    return first
+    return sub_string
     
 def impression(text):
+    """
+    agrega espacios al sub string y ejecuta la impresion
+    """
     myspace = long - len(text)         
-    contador = 1
+    count = 1
     for pos, txt in enumerate(text):
         print(txt,end='')
         if txt.isspace():
-            contador += 1
-            if contador <= myspace:
+            count += 1
+            if count <= myspace:
                 print(' ', end='')
             else:
                 continue 
@@ -43,16 +57,15 @@ def justify_text(my_text, long):
     line = round(len(my_text)/long)
     for l in range(line+1):
         text = my_text.split()
-        cadena = (bucle(text))       
-        impression(cadena)
-        my_text = my_text[len(cadena)+1:len(my_text)]
+        chain = (bucle(text))       
+        impression(chain)
+        my_text = my_text[len(chain)+1:len(my_text)]
     
 
 if __name__ == '__main__':
     
-    #my_text = input('Escriba una Oración: ').strip()
     my_text = "La historia de la ópera tiene una duración relativamente corta dentro del contexto de la historia de la música en general: apareció en 1597, fecha en que se creó la primera ópera."
     
-    long = int(input("Ingrese un número para el largo de la línea: "))
+    long = int(input("Enter a number for the length of the line: "))
     
     justify_text(my_text, long)
