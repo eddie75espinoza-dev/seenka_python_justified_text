@@ -1,5 +1,4 @@
-
-# -*- coding: utf-8 -*-
+#!/usr/bin/python
 """
 Dev: Eddie Espinoza
 date: 26/11/2021
@@ -20,7 +19,7 @@ def bucle(text):
             cadena.append(txt)
         if end >= long:
             break
-    first = " ".join(cadena).rstrip()
+    first = " ".join(cadena)
 
     return first
     
@@ -28,18 +27,19 @@ def impression(text):
     myspace = long - len(text)         
     contador = 1
     for pos, txt in enumerate(text):
+        print(txt,end='')
         if txt.isspace():
             contador += 1
             if contador <= myspace:
                 print(' ', end='')
             else:
                 continue 
-        print(txt,end='')
         long_text = pos + myspace + 1
         if long_text == long:
             print(end='\n')
 
 def justify_text(my_text, long):
+    
     line = round(len(my_text)/long)
     for l in range(line+1):
         text = my_text.split()
